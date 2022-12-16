@@ -1,0 +1,31 @@
+<div class="header">
+    <div class="nav">
+    <li>
+        <a href="/">В начало</a>
+        <a href="/exam/initial_page">Тесты по заданиям</a>
+    </li>
+    </div>
+    <div class="log">
+    <li id="links-log">
+        <% unless User.find_by_id(session[:current_user_id]).nil? %>
+            <a href="/log/sign_out">Log Out</a>
+        <% else %>
+            <a href="/log/sign_in">Log In</a>
+            <a href="/log/sign_up">Sign Up</a>
+        <% end %>
+    </li>
+    </div>
+</div>
+<div class="main">
+    <p>На сайте зарегистрированно <%= User.count - User.count_by_sql('Select count(*) from Users where role = "admin"') %></p>
+    <%= session[:current_user_id] %>
+    <% User.all.each do |item| %>
+      <p><%= item.email %></p>  
+    <% end %>
+</div>
+<div class="footer">
+    <div class="bmstu-link">
+    <a href="https://e-learning.bmstu.ru/iu6/">BMSTU IU6</a>
+    </div>
+</div>
+

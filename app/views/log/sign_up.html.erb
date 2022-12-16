@@ -1,0 +1,13 @@
+<%= form_with url: "/log/log", method: :post do |form| %>
+  <div class="email">
+    <%= form.label :email, "Email:" %>
+    <%= form.text_field :email %>
+  </div>
+  <div class="password">
+    <%= form.label :password, "Password:" %>
+    <%= form.password_field :password %>
+  </div>
+  <%= form.submit "Sign Up" %>
+<% end %>
+
+<div id="msg"></div>
