@@ -5,25 +5,22 @@ class LogController < ApplicationController
       @msg  << 'This email is not registered'
       return
     end
-    user = User.find_by(email: @email, password: @password)
-    if user.nil?
+    user = User.find_by(email: @email)
+    if user.nil? && user.authenticate(@password)
       @msg << 'Incorrect password!'
     else
-      if session[:current_user_id] == user.id # Len ...
-        @msg << 'User already log in'
-        return
-      end
       session[:current_user_id] = user.id
+      redirect_to root_path
     end
   end
 
   def sign_up
-    return unless check
-    user = User.new(email: @email, password: @password)
+    user = User.new(email: @email, password: @password, 
+      password_confirmation: @password_confirmation)
     if user.valid?
       user.save
     else 
-      user.errors.objects.map(&:message).each { |msg| @msg << msg }
+      user.errors.objects.map(&:full_message).each { |msg| @msg << msg }
     end
   end
 
@@ -41,18 +38,11 @@ class LogController < ApplicationController
   end
 
   private
-  
-  def check
-    unless User.find_by(email: @email).nil?
-      @msg << 'This email is already registered'
-      return false
-    end
-    return true
-  end
 
   def set_params
     @email = params[:email]
     @password = params[:password]
+    @password_confirmation = params[:password_confirmation]
     @commit = params[:commit]
     @msg= []
   end

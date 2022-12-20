@@ -7,7 +7,15 @@
     <%= form.label :password, "Password:" %>
     <%= form.password_field :password %>
   </div>
+  <div class="password-confirmation">
+    <%= form.label :password_confirmation, "Retype password:" %>
+    <%= form.password_field :password_confirmation %>
+  </div>
   <%= form.submit "Sign Up" %>
 <% end %>
+<%= button_to 'Homepage', root_path, method: :get %>
 
-<div id="msg"></div>
+<div class="errors-class">
+  <div id="msg"></div>
+</div>
+
