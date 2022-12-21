@@ -14,15 +14,6 @@
  *= require_self
  */
 
- .header {
-    height: 50px;
-    width: 100%;
-    background-color: green;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
 .footer {
     height: 50px;
     width: 100%;
@@ -42,40 +33,44 @@
     color: white;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.log {
+#log {
     position: absolute;
     right: 0;
     top: 15px;
 }
 
-.nav {
-    position: absolute;
-    left: 0;
-    top: 15px;
+.sign-in {
+    max-width: 400px;
+    margin: 185px auto;
+    border: black solid 1px;
+    padding: 70px;
 }
 
-.log > li {
-    list-style-type: none;
+.sign-in input, .sign-out input {
+    margin-bottom: 10px;
 }
 
-.nav > li {
-    list-style-type: none;
+#msg {
+    color: red;
+    font-size: 24px;
 }
 
-.nav > li > a {
-    padding-left: 10px;
+.task-part {
+    padding: 3px;
 }
 
-.log > li > a {
-    padding-right: 20px;
+.task-part:hover {
+    background-color: rgb(129, 114, 114);
 }
 
-.main {
-    position: absolute;
-    top: 50px;
+.sign-out {
+    max-width: 400px;
+    margin: 185px auto;
+    border: black solid 1px;
+    padding: 70px;
+}
+
+#msg-s {
+    color: green;
+    font-size: 24px;
 }

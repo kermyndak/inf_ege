@@ -1,31 +1,41 @@
-<div class="header">
-    <div class="nav">
-    <li>
-        <a href="/">В начало</a>
-        <a href="/exam/initial_page">Тесты по заданиям</a>
-    </li>
-    </div>
-    <div class="log">
-    <li id="links-log">
-        <% unless User.find_by_id(session[:current_user_id]).nil? %>
-            <a href="/log/sign_out">Log Out</a>
-        <% else %>
-            <a href="/log/sign_in">Log In</a>
-            <a href="/log/sign_up">Sign Up</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a href="/" class="nav-link link-info">В начало</a>
+        </li>
+        <%= turbo_frame_tag 'frame' do %>
+            <div id="task-tests">
+                <li class="nav-item active">
+                    <%= link_to 'Тесты по заданиям', '/homepage/edit', class: 'nav-link link-info'%>
+                </li>
+            </div>
         <% end %>
-    </li>
+    </ul>
+    <div class="log">
+        <ul class="navbar-nav mr-auto" id="log">
+            <% unless User.find_by_id(session[:current_user_id]).nil? %>
+                <%= button_to 'Log Out', '/log/sign_out', method: :get, class: "btn btn-outline-success" %>
+            <% else %>
+                <li class="nav-item active">
+                    <a href="/log/sign_in" class="nav-link link-info">Log In</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/log/sign_up" class="nav-link link-info">Sign Up</a>
+                </li>
+            <% end %>
+        </ul>
     </div>
-</div>
-<div class="main">
+</nav>
+<main>
     <p>На сайте зарегистрированно <%= User.count - User.count_by_sql('Select count(*) from Users where role = "admin"') %></p>
     <%= session[:current_user_id] %>
     <% User.all.each do |item| %>
       <p><%= item.email %></p>  
     <% end %>
-</div>
+</main>
 <div class="footer">
     <div class="bmstu-link">
-    <a href="https://e-learning.bmstu.ru/iu6/">BMSTU IU6</a>
+    <a href="https://e-learning.bmstu.ru/iu6/" class="nav-link link-info">BMSTU IU6</a>
     </div>
 </div>
 

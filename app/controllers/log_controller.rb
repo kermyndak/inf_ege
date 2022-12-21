@@ -25,6 +25,8 @@ class LogController < ApplicationController
   end
 
   def sign_out
+    session[:current_user_id] = 0
+    redirect_to root_path
   end
 
   def log
@@ -32,8 +34,6 @@ class LogController < ApplicationController
       sign_up
     elsif @commit == 'Log In'
       sign_in
-    else
-      session[:current_user_id] = 0
     end
   end
 
