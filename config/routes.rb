@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'homepage#index'
+  get 'task/first_part'
+  get 'task/second_part'
+  get 'task/exam'
   post 'log/log'
   get 'log/sign_in'
   get 'log/sign_out'

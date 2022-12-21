@@ -19,6 +19,7 @@ class LogController < ApplicationController
       password_confirmation: @password_confirmation)
     if user.valid?
       user.save
+      @msg_s = true
     else 
       user.errors.objects.map(&:full_message).each { |msg| @msg << msg }
     end
@@ -45,5 +46,6 @@ class LogController < ApplicationController
     @password_confirmation = params[:password_confirmation]
     @commit = params[:commit]
     @msg= []
+    @msg_s = false
   end
 end
