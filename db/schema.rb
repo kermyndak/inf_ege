@@ -26,10 +26,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_023017) do
     t.string "type_test", default: "Exam", null: false
     t.integer "user_id"
     t.string "user_answer", default: "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]", null: false
-    t.string "answer", default: "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]", null: false
+    t.string "answer", default: "[[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]", null: false
+    t.boolean "end", default: false
+    t.integer "result", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "\"test_id\"", name: "index_tests_on_test_id", unique: true
     t.index ["user_id"], name: "index_tests_on_user_id"
   end
 

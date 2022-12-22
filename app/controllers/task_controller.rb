@@ -1,6 +1,6 @@
 class TaskController < ApplicationController
-  before_action :set_params_test, only: %i[change_task task downloader]
-  before_action :set_params, only: %i[change_task task downloader]
+  before_action :set_params_test, only: %i[change_task task downloader result]
+  before_action :set_params, only: %i[change_task task downloader result]
   def first_part
   end
 
@@ -11,13 +11,13 @@ class TaskController < ApplicationController
   end
 
   def task
+    unless @current.check(@number)
+      @current.update_answer(@number, @id_task)
+    end
     @current.update_answer(@number, @id_task)
   end
 
   def change_task
-    unless @current.check(@number)
-      @current.update_answer(@number, @id_task)
-    end
     render turbo_stream: turbo_stream.update('task-block', partial: 'frame')
   end
 
@@ -27,6 +27,15 @@ class TaskController < ApplicationController
       filename: "#{@number}#{@file[@file.index('.')..]}",
       type: "application/#{@file.index('.')}"
     )
+  end
+
+  def result
+    unless @current.check(@number)
+      @current.update_answer(@number, @id_task)
+    end
+    @current.update(end: true)
+    @balls = @current.decode.map { |id_task, ball| ball }.reduce(:+)
+    render 'result'
   end
 
   private
@@ -64,11 +73,11 @@ class TaskController < ApplicationController
 
   def set_params_test
     @type_test = 'Exam'
-    if Test.find_by(user_id: session[:current_user_id]).nil?
+    if Test.find_by(user_id: session[:current_user_id], end: false).nil?
       @current = Test.create(user_id: session[:current_user_id], 
         type_test: @type_test)
     else
-      @current = Test.find_by(user_id: session[:current_user_id])
+      @current = Test.find_by(user_id: session[:current_user_id], end: false)
     end
   end
 end

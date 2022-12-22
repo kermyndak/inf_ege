@@ -1,0 +1,47 @@
+<div class="container-task">
+    <table class="table table-dark">
+        <thead class="thead-light">
+            <tr>
+                <th colspan="4">Результаты</th>
+            </tr>
+            <tr>
+                <td>
+                    Номер
+                </td>
+                <td>
+                    Ваш ответ
+                </td>
+                <td>
+                    Правильный ответ
+                </td>
+                <td>
+                    Первичный балл
+                </td>
+            </tr>
+        </thead>
+    <% decode_results = @current.decode %>
+    <% answers = decode_results.map { |id_task, _ball| (id_task.zero?) ? nil : Task.find(id_task).answer } %>
+    <% @current.decode_user.each_with_index do |user_answer, index| %>
+        <tbody>
+            <tr>
+                <th scope="row">
+                    <%= index + 1 %>
+                </th>
+                <td>
+                    <%= user_answer%>
+                </td>
+                <td>
+                    <%= answers[index] %>
+                </td>
+                <td>
+                    <%= decode_results[index][1] %>
+                </td>
+            </tr>
+        </tbody>
+    <% end %>
+    </table>
+    <% @current.update(result: @balls) %>
+    <% u = User.find(@current.user_id) %>
+    <% u.update(balls: u.balls + @balls) %>
+    <p>Ваш первичный балл: <%= @balls %></p>
+</div>
