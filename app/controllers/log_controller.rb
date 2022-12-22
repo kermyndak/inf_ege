@@ -6,11 +6,11 @@ class LogController < ApplicationController
       return
     end
     user = User.find_by(email: @email)
-    if user.nil? && user.authenticate(@password)
-      @msg << 'Incorrect password!'
-    else
+    if user.authenticate(@password)
       session[:current_user_id] = user.id
       redirect_to root_path
+    else
+      @msg << 'Incorrect password!'
     end
   end
 
@@ -26,7 +26,7 @@ class LogController < ApplicationController
   end
 
   def sign_out
-    session[:current_user_id] = 0
+    session[:current_user_id] = nil
     redirect_to root_path
   end
 

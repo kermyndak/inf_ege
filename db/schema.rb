@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_22_014056) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_22_023017) do
   create_table "tasks", force: :cascade do |t|
     t.integer "number", null: false
-    t.string "formulation", null: false
+    t.string "formulation", default: "", null: false
+    t.string "path_image"
     t.string "answer", null: false
     t.integer "part", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["number"], name: "index_tasks_on_number", unique: true
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "type_test", default: "Exam", null: false
+    t.integer "user_id"
+    t.time "time_start", null: false
+    t.string "answer", default: "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "\"test_id\"", name: "index_tests_on_test_id", unique: true
+    t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

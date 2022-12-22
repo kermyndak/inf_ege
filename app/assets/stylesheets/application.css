@@ -148,3 +148,8 @@
 .list-tasks li:hover {
     transform: scale(1.2);
 }
+
+.task-image {
+    height: 300px;
+    width: 600px;
+}
