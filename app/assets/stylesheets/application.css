@@ -74,3 +74,77 @@
     color: green;
     font-size: 24px;
 }
+
+/* For task.html.erb */
+
+.container {
+    max-width: 1200px;
+    background-color: rgb(174, 209, 239);
+    margin: 200px auto;
+    padding: 40px;
+}
+
+.task {
+    display: flex;
+}
+
+.task-block{
+    width: 700px;
+    border: solid black 1px;
+    padding: 10px;
+    margin-right: auto;
+}
+
+.list-tasks {
+    width: 360px;
+    border: solid black 1px;
+    padding: 5px;
+    height: 357px;
+}
+
+.list-tasks li {
+    margin: 0 10px;
+    list-style: none;
+    display: inline-block;
+}
+
+.list-tasks a {
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
+    padding: 12px;
+    background-color: rgb(204, 212, 220);
+    font-size: 13px;
+}
+
+.row-navigate {
+    margin: 32px 0;
+}
+
+.small-number {
+    padding: 12px 16px !important;
+}
+
+.task-info {
+    font-size: 20px;
+    text-align: center;
+}
+
+.answer-task {
+    width: 400px;
+    height: 35px;
+    margin: 0 auto;
+    display: block;
+}
+
+.title-task {
+    text-align: center;
+}
+
+.list-tasks a:hover {
+    background-color: rgb(179, 200, 221);
+}
+
+.list-tasks li:hover {
+    transform: scale(1.2);
+}

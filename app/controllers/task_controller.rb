@@ -7,4 +7,7 @@ class TaskController < ApplicationController
 
   def exam
   end
+
+  def task
+  end
 end

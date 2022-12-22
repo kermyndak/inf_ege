@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'log/sign_out'
   get 'log/sign_up'
   get 'homepage/edit'
+  get 'task/task'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
