@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_023017) do
   create_table "tests", force: :cascade do |t|
     t.string "type_test", default: "Exam", null: false
     t.integer "user_id"
+    t.string "user_answer", default: "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]", null: false
     t.string "answer", default: "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -33,7 +33,15 @@ class TaskController < ApplicationController
 
   def set_params
     @number = (params[:number].nil?) ? 1 : params[:number].to_i
+    @current_number = params[:current_number].to_i
+    @answer = params[:answer]
+    @user_answer = @current.decode_user[@number - 1]
+    @current.update_result(@current_number, @answer) if @answer # check answer on task
     return unless check_current_task
+    generate_task
+  end
+
+  def generate_task
     where = Task.where(number: @number)
     @task = where[rand(where.size)]
     @formulation = @task.formulation
