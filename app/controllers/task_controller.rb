@@ -1,6 +1,6 @@
 class TaskController < ApplicationController
-  before_action :set_params_test, only: %i[change_task task]
-  before_action :set_params, only: %i[change_task task]
+  before_action :set_params_test, only: %i[change_task task downloader]
+  before_action :set_params, only: %i[change_task task downloader]
   def first_part
   end
 
@@ -21,12 +21,24 @@ class TaskController < ApplicationController
     render turbo_stream: turbo_stream.update('task-block', partial: 'frame')
   end
 
+  def downloader
+    send_file(
+      "#{Rails.root}/public/files/#{@file}",
+      filename: "#{@number}#{@file[@file.index('.')..]}",
+      type: "application/#{@file.index('.')}"
+    )
+  end
+
+  private
+
   def set_params
     @number = (params[:number].nil?) ? 1 : params[:number].to_i
     return unless check_current_task
     where = Task.where(number: @number)
     @task = where[rand(where.size)]
     @formulation = @task.formulation
+    @path_image = @task.path_image
+    @file = @task.file
     @id_task = @task.id
   end
 
@@ -35,6 +47,8 @@ class TaskController < ApplicationController
       @id_task = @current.check(@number)
       @task = Task.find(@id_task)
       @formulation = @task.formulation
+      @path_image = @task.path_image
+      @file = @task.file
       return false
     end
     return true

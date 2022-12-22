@@ -2,10 +2,20 @@
     <div class="task">
         <div class="task-block" id="task-block">
             <h2 class="title-task">Задание <%= @number %></h2>
-            <p class="task-info">
-                <%= image_tag "image.png", class: 'task-image'%>
-                <%= @formulation %>
-            </p>
+                <pre class="task-info">
+                    <% if @path_image %>
+                        <%= image_tag @path_image, class: 'task-image'%>
+                    <% end %>
+                    <%= @formulation %>
+                </pre>
+                <% if @file %>
+                    <div class="file">
+                        <%= link_to "/task/downloader?number=#{@number}", class: 'file-downloader' do %>
+                            <%= image_tag 'logo-file.png' %>
+                        <% end %>
+                        <%="#{@number}#{@file[@file.index('.')..]}"%>
+                    </div>
+                <% end %>
             <input type="text" name="answer" id="answer" class="answer-task">
         </div>
         <div class="list-tasks">

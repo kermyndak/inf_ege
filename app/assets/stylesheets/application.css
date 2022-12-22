@@ -89,7 +89,7 @@
 }
 
 .task-block{
-    width: 700px;
+    width: 900px;
     border: solid black 1px;
     padding: 10px;
     margin-right: auto;
@@ -126,8 +126,8 @@
 }
 
 .task-info {
-    font-size: 20px;
-    text-align: center;
+    white-space: pre-wrap;
+    font-size: 18px;
 }
 
 .answer-task {
@@ -150,6 +150,22 @@
 }
 
 .task-image {
-    height: 300px;
-    width: 600px;
+    height: 500px;
+    width: 900px;
+    display: block;
+}
+
+.file-downloader {
+    text-decoration: none;
+}
+
+.file {
+    display: flex;
+    float: left;
+    font-size: 20px;
+    align-items: center;
+}
+
+.file a {
+    margin-right: 5px;
 }

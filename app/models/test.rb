@@ -1,6 +1,5 @@
 class Test < ApplicationRecord
     belongs_to :user
-    before_save :set_time_start
 
     def decode
       ActiveSupport::JSON.decode(self.answer)
@@ -21,9 +20,5 @@ class Test < ApplicationRecord
 
     def encode(array)
       ActiveSupport::JSON.encode(array)
-    end
-
-    def set_time_start
-      self.time_start = Time::now
     end
 end
