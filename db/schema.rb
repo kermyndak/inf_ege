@@ -26,8 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_023017) do
     t.string "type_test", default: "Exam", null: false
     t.integer "user_id"
     t.string "user_answer", default: "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]", null: false
-    t.string "answer", default: "[[1,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]", null: false
-    t.boolean "end", default: false
+    t.string "answer", default: "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]", null: false
+    t.integer "end", default: 0
     t.integer "result", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,4 +44,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_023017) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "tests", "users"
 end

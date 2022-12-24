@@ -16,7 +16,7 @@
                         <%="#{@number}#{@file[@file.index('.')..]}"%>
                     </div>
                 <% end %>
-            <input type="text" name="answer" id="answer" class="answer-task">
+            <input type="text" name="answer" id="answer" class="answer-task", value="<%= @user_answer %>">
         </div>
         <div class="list-tasks">
             <div class="row-navigate">

@@ -20,8 +20,7 @@ class Test < ApplicationRecord
       (task[0].zero?) ? false : task[0]
     end
 
-    def update_result(number, value, id_task)
-      update_answer(number, id_task)
+    def update_result(number, value)
       arr = decode
       task = Task.find(arr[number - 1][0])
       answers = decode_user
