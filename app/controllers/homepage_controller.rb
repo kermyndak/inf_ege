@@ -1,4 +1,5 @@
 class HomepageController < ApplicationController
+  before_action :set_cookie
   def index
   end
 

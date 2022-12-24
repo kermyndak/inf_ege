@@ -1,5 +1,6 @@
 class LogController < ApplicationController
   before_action :set_params
+  before_action :set_cookie
   def sign_in
     if User.find_by(email: @email).nil?
       @msg  << 'This email is not registered'
