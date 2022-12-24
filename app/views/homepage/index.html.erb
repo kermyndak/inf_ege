@@ -3,3 +3,4 @@
 <% User.all.each do |item| %>
     <p><%= item.email %></p>  
 <% end %>
+<%= cookies[:login] %>

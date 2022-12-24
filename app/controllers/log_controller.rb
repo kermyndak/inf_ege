@@ -8,6 +8,7 @@ class LogController < ApplicationController
     user = User.find_by(email: @email)
     if user.authenticate(@password)
       session[:current_user_id] = user.id
+      cookies[:login] = { value: user.id, expires: (Time.now + 60) } # 1 minute
       redirect_to root_path
     else
       @msg << 'Incorrect password!'
@@ -27,6 +28,7 @@ class LogController < ApplicationController
 
   def sign_out
     session[:current_user_id] = nil
+    cookies.delete :login
     redirect_to root_path
   end
 
