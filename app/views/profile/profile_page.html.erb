@@ -1,0 +1,33 @@
+<div class="container-md">
+    <h1>
+        Email:
+    </h1>
+    <p class="info-profile"> <%= @current.email %></p>
+    <% if @current.role %>
+        <h1>
+            Роль: 
+        </h1>
+        <p class="info-profile"> <%= @current.role %></p>
+    <% end %>
+    <h1>
+        Дата регистрации:
+    </h1>
+    <p class="info-profile"> <%= @born %></p>
+    <h1>
+        Количество пройденных тестов:
+    </h1>
+    <p class="info-profile"> <%= @count %> </p>
+    <h1>
+        Уровень: <%= @level[0] %>
+    </h1>
+    <br>
+    <div class="row">
+        <div class="col" id="level-left"><h1><%= @level[0] %></h1></div>
+            <div class="col-10">
+                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" id="progress-bar" style="width: <%= @procent %>%"></div>
+                </div>
+            </div>
+        <div class="col" id="level-right"><h1><%= @level[0] + 1%></h1></div>
+    </div>
+</div>

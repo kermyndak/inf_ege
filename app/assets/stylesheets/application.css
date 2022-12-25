@@ -213,3 +213,12 @@
 .link-up {
     text-align: center;
 }
+
+/* For profile_page.html.erb */
+.info-profile {
+    font-size: 22px;
+}
+
+#progress-bar {
+    background-color: #B6137D;
+}

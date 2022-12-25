@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+# Admin generate
+User.create(email: 'admin@admin.ru', password: 'password', password_confirmation: 'password', role: 'admin')
+Test.create(user_id: User.find_by(email: 'admin@admin.ru').id, end: 1, result: 200)
+
 # First variant
 Task.create(number: 1, path_image: '1-1.png', answer: '41')
 Task.create(number: 2, path_image: '2-1.png', answer: 'yxwz')
@@ -44,4 +48,4 @@ Task.create(number: 8, formulation: '    Все 5-буквенные слова,
 4. КККОК
 ……', answer: 'РРРОК')
 Task.create(number: 9, formulation: 'Откройте файл электронной таблицы 9.xls, содержащей вещественные числа – результаты ежечасного измерения температуры воздуха на протяжении трёх месяцев. Найдите количество дней в апреле, когда температура в 09:00 была выше, чем  средняя температура в этот день.', answer: '16', file: '9-1.xls')
-Task.create(number: 10, formulation: 'С помощью текстового редактора определите, сколько раз, не считая сносок, встречается название города «Москва» (в любых падежах) в тексте романа А.С. Пушкина «Капитанская дочка» (файл 10.docx). В ответе укажите только число.', answer: 14, file: '10-1.docx')
+Task.create(number: 10, formulation: 'С помощью текстового редактора определите, сколько раз, не считая сносок, встречается название города «Москва» (в любых падежах) в тексте романа А.С. Пушкина «Капитанская дочка» (файл 10.docx). В ответе укажите только число.', answer: '14', file: '10-1.docx')

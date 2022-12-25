@@ -1,6 +1,7 @@
-<p>На сайте зарегистрированно <%= User.count - User.count_by_sql('Select count(*) from Users where role = "admin"') %></p>
-<%= session[:current_user_id] %>
-<% User.all.each do |item| %>
-    <p><%= item.email %></p>  
-<% end %>
-<%= cookies[:login] %>
+<div class="container-md"><p>На сайте зарегистрированно <%= User.count - User.count_by_sql('Select count(*) from Users where role = "admin"') %></p>
+    <%= session[:current_user_id] %>
+    <% User.all.each do |item| %>
+        <p><%= item.email %></p>  
+    <% end %>
+    <%= cookies[:login] %>
+</div>

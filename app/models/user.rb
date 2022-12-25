@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :tests, dependent: :destroy
+  has_many :tests, dependent: :destroy, autosave: true
 
   validates :email, {
     presence: {

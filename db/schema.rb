@@ -38,7 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_023017) do
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "role"
-    t.integer "balls", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

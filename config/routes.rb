@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'task/change_task'
   get '/task/downloader'
   get '/task/result'
+  get '/profile/profile_page'
+  get '/profile/admin_page'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

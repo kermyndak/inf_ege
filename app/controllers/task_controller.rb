@@ -18,7 +18,7 @@ class TaskController < ApplicationController
     @user_answer = @current.decode_user[@number - 1]
     if @type_test == 'first'
       render 'task_first'
-    elsif
+    elsif @type_test == 'second'
       render 'task_second'
     end
   end
