@@ -31,7 +31,13 @@
       <div class="log">
         <ul class="navbar-nav mr-auto" id="log">
           <% unless User.find_by_id(session[:current_user_id]).nil? %>
-            <%= button_to 'Log Out', '/log/sign_out', method: :get, class: "btn btn-outline-success" %>
+             <%= turbo_frame_tag 'profile' do %>
+                <div id="profile">
+                  <li class="nav-item active">
+                    <%= link_to 'Профиль', '/homepage/profile', class: 'nav-link link-info'%>
+                  </li>
+                </div>
+              <% end %>
           <% else %>
             <li class="nav-item active">
               <a href="/log/sign_in" class="nav-link link-info">Log In</a>

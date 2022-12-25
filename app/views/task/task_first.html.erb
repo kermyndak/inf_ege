@@ -1,0 +1,88 @@
+<div class="container-task">
+    <div class="task">
+        <div class="task-block" id="task-block">
+            <h2 class="title-task">Задание <%= @number %></h2>
+                <pre class="task-info">
+                    <% if @path_image %>
+                        <%= image_tag @path_image, class: 'task-image'%>
+                    <% end %>
+                    <%= @formulation %>
+                </pre>
+                <% if @file %>
+                    <div class="file">
+                        <%= link_to "/task/downloader?number=#{@number}", class: 'file-downloader' do %>
+                            <%= image_tag 'logo-file.png' %>
+                        <% end %>
+                        <%="#{@number}#{@file[@file.index('.')..]}"%>
+                    </div>
+                <% end %>
+            <input type="text" name="answer" id="answer" class="answer-task", value="<%= @user_answer %>">
+        </div>
+        <div class="list-tasks">
+            <div class="row-navigate">
+                <li><a href="/task/change_task?number=1" class="small-number">1</a></li>
+                <li><a href="/task/change_task?number=2" class="small-number">2</a></li>
+                <li><a href="/task/change_task?number=3" class="small-number">3</a></li>
+                <li><a href="/task/change_task?number=4" class="small-number">4</a></li>
+                <li><a href="/task/change_task?number=5" class="small-number">5</a></li>
+            </div>
+            <div class="row-navigate">
+                <li><a href="/task/change_task?number=6" class="small-number">6</a></li>
+                <li><a href="/task/change_task?number=7" class="small-number">7</a></li>
+                <li><a href="/task/change_task?number=8" class="small-number">8</a></li>
+                <li><a href="/task/change_task?number=9" class="small-number">9</a></li>
+                <li><a href="/task/change_task?number=10">10</a></li>
+            </div>
+            <div class="row-navigate">
+                <li><a href="/task/change_task?number=1">11</a></li>
+                <li><a href="/task/change_task?number=12">12</a></li>
+                <li><a href="/task/change_task?number=13">13</a></li>
+                <li><a href="/task/change_task?number=14">14</a></li>
+                <li><a href="/task/change_task?number=15">15</a></li>
+            </div>
+            <div class="row-navigate">
+                <li><a href="/task/change_task?number=16">16</a></li>
+                <li><a href="/task/change_task?number=17">17</a></li>
+                <li><a href="/task/change_task?number=18">18</a></li>
+                <li><a href="/task/change_task?number=19">19</a></li>
+                <li><a href="/task/change_task?number=20">20</a></li>
+            </div>
+            <div class="row-navigate">
+                <li><a href="/task/change_task?number=21">21</a></li>
+                <li><a href="/task/change_task?number=22">22</a></li>
+                <li><a href="/task/change_task?number=23">23</a></li>
+                <li><a href="/task/change_task?number=24">24</a></li>
+                <li><a href="/task/change_task?number=25">25</a></li>
+            </div>
+            <%= link_to 'Закончить тест', '/task/result', class: 'btn btn-danger', id: 'result' %>
+        </div>
+    </div>
+</div>
+
+<style>
+    .list-tasks {
+        height: 310px !important;
+    }
+</style>
+
+<script>
+    $('.row-navigate li').click(function(){
+        let answer = document.getElementById('answer').value
+        let current_number = document.getElementsByClassName('title-task')[0].textContent
+        current_number = current_number.substr(current_number.indexOf(' ') + 1, current_number.length - 1)
+        href = this.childNodes[0]
+        href.href = '/task/change_task?number=' + href.text
+        href.href += '&current_number=' + current_number + '&answer=' + answer
+        console.log(href)
+    })
+
+    $('.list-tasks a#result').click(function(){
+        let answer = document.getElementById('answer').value
+        let current_number = document.getElementsByClassName('title-task')[0].textContent
+        current_number = current_number.substr(current_number.indexOf(' ') + 1, current_number.length - 1)
+        href = this
+        href.href = '/task/result?'
+        href.href += 'current_number=' + current_number + '&answer=' + answer
+        console.log(href)
+    })
+</script>

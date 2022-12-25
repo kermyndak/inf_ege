@@ -44,4 +44,5 @@
     <% u = User.find(@current.user_id) %>
     <% u.update(balls: u.balls + @balls) %>
     <p>Ваш первичный балл: <%= @balls %></p>
+    <a href="/" class="btn btn-success">В начало</a>
 </div>

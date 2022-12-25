@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'log/sign_out'
   get 'log/sign_up'
   get 'homepage/edit'
+  get 'homepage/profile'
+  get 'homepage/up'
   get 'task/task'
   get 'task/change_task'
   get '/task/downloader'

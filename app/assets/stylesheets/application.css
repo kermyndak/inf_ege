@@ -36,7 +36,7 @@
 #log {
     position: absolute;
     right: 0;
-    top: 15px;
+    top: 8px;
 }
 
 .sign-in {
@@ -61,6 +61,7 @@
 
 .task-part:hover {
     background-color: rgb(129, 114, 114);
+    border-radius: 10px;
 }
 
 .sign-out {
@@ -73,6 +74,13 @@
 #msg-s {
     color: green;
     font-size: 24px;
+}
+
+#task-tests {
+    position: absolute;
+    background-color: #212529;
+    width: 200px;
+    border-radius: 10px;
 }
 
 /* For task.html.erb */
@@ -168,4 +176,40 @@
 
 .file a {
     margin-right: 5px;
+}
+
+/* For exam.html.erb */
+.test-description {
+    font-size: 24px;
+}
+
+.start-test {
+    text-decoration: none;
+    border: black solid 1px;
+    padding: 7px 17px;
+    background-color: rgb(241, 201, 201);
+}
+
+.start-test:hover {
+    padding: 10px 20px;
+    box-shadow: 0 0 15px rgb(129, 114, 114);
+}
+
+.default-font {
+    font-size: 20px;
+}
+
+/* For _profile.html.erb */
+#profile {
+    background-color: #212529;
+    width: 130px;
+    border-radius: 5px;
+}
+
+#sign-out-button {
+    width: 130px;
+}
+
+.link-up {
+    text-align: center;
 }

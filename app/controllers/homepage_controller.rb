@@ -3,7 +3,15 @@ class HomepageController < ApplicationController
   def index
   end
 
+  def profile
+    render partial: 'profile_list'
+  end
+
   def edit
     render partial: 'frame'
+  end
+
+  def up
+    render partial: 'up_frame'
   end
 end

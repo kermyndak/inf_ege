@@ -1,5 +1,5 @@
-<%= turbo_frame_tag 'frame' do %>
-    <div id="task-tests">
+<%= turbo_frame_tag 'profile' do %>
+    <div id="profile">
         <li class="nav-item active task-part">
             <%= link_to 'Часть 1', '/task/first_part', class: 'nav-link link-info' %>
         </li>
@@ -8,6 +8,9 @@
         </li>
         <li class="nav-item active task-part">
             <%= link_to 'Экзамен', '/task/exam', class: 'nav-link link-info' %>
+        </li>
+        <li>
+            <%= button_to 'Log Out', '/log/sign_out', method: :get, class: "btn btn-outline-success", id: 'sign-out-button' %>
         </li>
         <li class="nav-item active task-part">
             <%= link_to 'ᐱ', '/homepage/up', class: 'nav-link link-info link-up' %>
