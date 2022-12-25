@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
       end
     else
       session[:current_user_id] = nil
+      redirect_to '/log/sign_up'
     end
   end
 end

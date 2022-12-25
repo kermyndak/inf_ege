@@ -1,0 +1,4 @@
+<%= turbo_stream.update 'msg', partial: 'messages' %>
+<% if @msg_s %>
+    <%= turbo_stream.update 'msg-s', 'Successfuly update!' %>
+<% end %>

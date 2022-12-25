@@ -4,11 +4,19 @@
             <%= link_to 'Открыть профиль', '/profile/profile_page', class: 'nav-link link-info' %>
         </li>
         <li class="nav-item active task-part">
-            <%= link_to 'Редактировать', '/task/second_part', class: 'nav-link link-info' %>
+            <%= link_to 'Редактировать профиль', '/profile/edit', class: 'nav-link link-info' %>
         </li>
         <li class="nav-item active task-part">
             <%= link_to 'Пройденные тесты', '/task/exam', class: 'nav-link link-info' %>
         </li>
+        <% if @role == 'admin' %>
+            <li class="nav-item active task-part">
+                <%= link_to 'Управление пользователями', '/profile/admin_page', class: 'nav-link link-info' %>
+            </li>
+            <li class="nav-item active task-part">
+                <%= link_to 'Добавление заданий', '/task/exam', class: 'nav-link link-info' %>
+            </li>
+        <% end %>
         <li>
             <%= button_to 'Выйти', '/log/sign_out', method: :get, class: "btn btn-outline-success", id: 'sign-out-button' %>
         </li>

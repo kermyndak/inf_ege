@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/task/result'
   get '/profile/profile_page'
   get '/profile/admin_page'
+  get '/profile/edit'
+  post '/profile/log'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
