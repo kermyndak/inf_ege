@@ -224,8 +224,8 @@
 }
 
 /* For edit.html.erb */
-#content {
-    margin-top: 40px;
+.content {
+    margin: 40px 0;
     max-width: 700px;
 }
 

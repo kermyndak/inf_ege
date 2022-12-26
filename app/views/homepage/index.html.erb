@@ -1,7 +1,13 @@
-<div class="container-md"><p>На сайте зарегистрированно <%= User.count - User.count_by_sql('Select count(*) from Users where role = "admin"') %></p>
-    <%= session[:current_user_id] %>
-    <% User.all.each do |item| %>
-        <p><%= item.email %></p>  
-    <% end %>
-    <%= cookies[:login] %>
+<div class="container-md content"><h3>На сайте зарегистрированно: <%= User.count - User.count_by_sql('Select count(*) from Users where role = "admin"') %></h3>
+    <table class="table">
+        <tr><th>Рейтинг</th></tr>
+        <tr><th>Место</th><th>Пользователь</th><th>Баллы</th></tr>
+        <% @users.sort_by(&:first).each_with_index do |user, index| %>
+            <tr>
+                <td><%= index + 1 %></td>
+                <td><%= user[0].email %></td>
+                <td><%= user[1] %></td>
+            </tr>
+        <% end %>
+    </table>
 </div>

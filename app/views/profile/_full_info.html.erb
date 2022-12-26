@@ -1,0 +1,44 @@
+<%= turbo_frame_tag 'full' do %>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th colspan="4">Результаты</th>
+      </tr>
+      <tr>
+        <td>
+          Номер
+        </td>
+        <td>
+          Ваш ответ
+        </td>
+        <td>
+          Правильный ответ
+        </td>
+        <td>
+          Первичный балл
+        </td>
+      </tr>
+    </thead>
+    <% decode_results = @current.decode %>
+    <% answers = decode_results.map { |id_task, _ball| (id_task.zero?) ? nil : Task.find(id_task).answer } %>
+    <% @current.decode_user.each_with_index do |user_answer, index| %>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <%= index + 1 %>
+          </th>
+          <td>
+            <%= user_answer%>
+          </td>
+          <td>
+            <%= answers[index] %>
+          </td>
+          <td>
+            <%= decode_results[index][1] %>
+          </td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  <a href="/profile/up?test<%= @current.id %>" class='btn btn-primary'>ᐱ</a>
+<% end %>

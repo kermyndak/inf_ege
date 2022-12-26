@@ -2,6 +2,7 @@ class ProfileController < ApplicationController
   before_action :set_params, only: :profile_page
   before_action :set_cookie
   before_action :set_edit, only: :log
+  before_action :redirect_to_sign_up
   def profile_page
   end
 
@@ -9,6 +10,20 @@ class ProfileController < ApplicationController
   end
 
   def edit
+  end
+
+  def up
+    @id = params[:test].to_i
+    render partial: 'up'
+  end
+
+  def full_info
+    @current = Test.find(params[:test].to_i)
+    render partial: 'full_info'
+  end
+
+  def tests_info
+    @tests = Test.where(user_id: session[:current_user_id])
   end
 
   def log

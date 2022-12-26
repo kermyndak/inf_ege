@@ -1,0 +1,17 @@
+<div class="container-md content">
+  <% @tests.each_with_index do |test| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= test.updated_at %></h5>
+        <p>Первичный балл: <%= test.result %></p>
+        <%= turbo_frame_tag 'full' do %>
+          <a href="/profile/full_info?test=<%= test.id %>" class="btn btn-primary">Подробнее</a>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+  <% if @tests.empty? %>
+    <h2>У вас ещё нет решённых тестов</h2>
+  <% end %>
+</div>

@@ -2,6 +2,7 @@ class TaskController < ApplicationController
   before_action :set_params_test, only: %i[change_task task downloader result]
   before_action :set_params, only: %i[change_task task downloader]
   before_action :set_params_result, only: :result
+  before_action :redirect_to_sign_up
   before_action :set_test_cookie, only: :task # set cookie time for test pages
   before_action :set_cookie, only: :result # set cookie time for result page
   def first_part
