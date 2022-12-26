@@ -18,7 +18,7 @@ class LogController < ApplicationController
 
   def sign_up
     user = User.new(email: @email, password: @password, 
-      password_confirmation: @password_confirmation)
+      password_confirmation: @password_confirmation, role: 'user')
     if user.valid?
       user.save
       @msg_s = true

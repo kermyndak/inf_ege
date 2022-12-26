@@ -1,2 +1,22 @@
-<h1>Profile#admin_page</h1>
-<p>Find me in app/views/profile/admin_page.html.erb</p>
+<div class="container-md content">
+  <% @users.each do |user| %>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Email: <%= user.email %></h3>
+        <p>Дата создания: <%= user.created_at %></p>
+        <p>Дата обновления: <%= user.updated_at %></p>
+        <p>Роль: <%= user.role %></p>
+        <p>Решено тестов: <%= Test.where(user_id: user.id).size %></p>
+        <%= turbo_frame_tag 'set_admin' do %>
+          <% if user.role == 'user' %>
+            <a href="/profile/set_admin?user=<%= user.id %>" class="btn btn-primary">Назначить администратором</a>  
+          <% else %>
+            <a href="/profile/set_admin?user=<%= user.id %>" class="btn btn-danger">Сделать обычным пользователем</a>
+          <% end %>
+        <% end %>
+          <a href="/profile/destroy?user=<%= user.id %>" class="btn btn-danger">Удалить пользователя</a>
+      </div>
+    </div>
+    <br>
+  <% end %>
+</div>

@@ -9,10 +9,14 @@
         <li class="nav-item active task-part">
             <%= link_to 'Пройденные тесты', '/profile/tests_info', class: 'nav-link link-info' %>
         </li>
-        <% if @role == 'admin' %>
+        <% if @role == 'superadmin' %>
             <li class="nav-item active task-part">
                 <%= link_to 'Управление пользователями', '/profile/admin_page', class: 'nav-link link-info' %>
             </li>
+            <li class="nav-item active task-part">
+                <%= link_to 'Добавление заданий', '/task/exam', class: 'nav-link link-info' %>
+            </li>
+        <% elsif @role == 'admin'  %>
             <li class="nav-item active task-part">
                 <%= link_to 'Добавление заданий', '/task/exam', class: 'nav-link link-info' %>
             </li>

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get '/profile/tests_info'
   get '/profile/full_info'
   get '/profile/up'
+  get '/profile/set_admin'
+  get '/profile/destroy'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

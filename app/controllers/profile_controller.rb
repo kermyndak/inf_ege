@@ -7,6 +7,27 @@ class ProfileController < ApplicationController
   end
 
   def admin_page
+    if User.find(session[:current_user_id]).role != 'superadmin'
+      redirect_to root_path
+    end
+    @users = User.where.not(role: 'superadmin')
+  end
+
+  def set_admin
+    @user_id = params[:user].to_i
+    @user = User.find(@user_id)
+    if @user.role == 'user'
+      @user.update_column(:role, 'admin')
+    else
+      @user.update_column(:role, 'user')
+    end
+    render partial: 'admin'
+  end
+
+  def destroy
+    @user_id = params[:user].to_i
+    User.destroy(@user_id)
+    redirect_to '/profile/admin_page'
   end
 
   def edit

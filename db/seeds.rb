@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Admin generate
-User.create(email: 'admin@admin.ru', password: 'password', password_confirmation: 'password', role: 'admin')
+User.create(email: 'admin@admin.ru', password: 'password', password_confirmation: 'password', role: 'superadmin')
 Test.create(user_id: User.find_by(email: 'admin@admin.ru').id, end: 1, result: 200)
 
 # First variant
