@@ -1,9 +1,16 @@
 class ProfileController < ApplicationController
-  before_action :set_params, only: :profile_page
   before_action :set_cookie
   before_action :set_edit, only: :log
   before_action :redirect_to_sign_up
+  
   def profile_page
+    @current = User.find(session[:current_user_id])
+    @born = @current.created_at
+    @born = "#{@born.day}.#{@born.month}.#{@born.year}"
+    @tests = Test.where(user_id: session[:current_user_id])
+    @balls = @tests.map(&:result).sum
+    @level = get_level(@balls)
+    @procent = ((@balls - @level[1]) / (@level[2] - @level[1]).to_f * 100).to_i
   end
 
   def admin_page
@@ -53,17 +60,6 @@ class ProfileController < ApplicationController
   end
 
   private
-
-  def set_params
-    @current = User.find(session[:current_user_id])
-    @born = @current.created_at
-    @born = "#{@born.day}.#{@born.month}.#{@born.year}"
-    @tests = Test.where(user_id: session[:current_user_id])
-    @balls = @tests.map(&:result).sum
-    @level = get_level(@balls)
-    @procent = ((@balls - @level[1]) / (@level[2] - @level[1]).to_f * 100).to_i
-  end
-
   def set_edit
     @email = params[:email]
     @password = params[:password]
