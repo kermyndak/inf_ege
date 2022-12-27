@@ -3,7 +3,7 @@
 # This class for actions and methods in profile controller
 class ProfileController < ApplicationController
   before_action :set_cookie
-  before_action :redirect_to_sign_up
+  before_action :redirect_to_sign_in
   before_action :set_profile, only: :profile_page
   before_action :set_edit, only: :log
 

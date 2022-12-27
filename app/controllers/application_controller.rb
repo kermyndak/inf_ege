@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def redirect_to_sign_up
-    redirect_to '/log/sign_up' unless cookies[:login]
+  def redirect_to_sign_in
+    redirect_to '/log/sign_in' unless cookies[:login]
   end
 end

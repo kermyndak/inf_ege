@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Logs", type: :request do
-  describe "GET /log" do
+  describe "POST /log" do
     it "returns http success" do
-      get "/log/log"
+      post "/log/log"
       expect(response).to have_http_status(:success)
     end
   end
@@ -28,5 +28,4 @@ RSpec.describe "Logs", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-
 end
