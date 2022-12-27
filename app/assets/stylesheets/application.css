@@ -232,3 +232,9 @@
 .btn-edit {
     margin-top: 10px;
 }
+
+/* For add_task.html.erb */
+
+#formulation {
+    height: 300px;
+}

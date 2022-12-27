@@ -14,6 +14,10 @@ class TaskController < ApplicationController
 
   def exam; end
 
+  def add_task
+
+  end
+
   def task
     @current.update_answer(@number, @id_task)
     @user_answer = @current.decode_user[@number - 1]

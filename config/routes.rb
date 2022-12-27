@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/profile/up'
   get '/profile/set_admin'
   get '/profile/destroy'
+  get '/profile/add_task'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

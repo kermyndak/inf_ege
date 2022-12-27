@@ -1,0 +1,26 @@
+<div class="container-sm content">
+  <%= form_with url: "/profile/log", method: :post do |form| %>
+    <div class="number">
+      <%= form.label :number, "Number email:" %>
+      <%= form.number_field :number, in: 1..27, placeholder: "number", class: 'form-control' %>
+    </div>
+    <br>
+    <div class="formulation">
+      <%= form.label :formulation, "Formulation:" %>
+      <%= form.text_area :formulation, placeholder: 'formulation', class: "form-control" %>
+    </div>
+    <br>
+    <div class="answer">
+      <%= form.label :answer, "Answer:" %>
+      <%= form.text_field :answer, placeholder: 'answer', class: "form-control" %>
+    </div>
+    <br>
+    <%= form.submit "Save", class: "btn btn-success" %>
+  <% end %>
+  <%= button_to 'Homepage', root_path, method: :get, class: "btn btn-primary btn-edit" %>
+
+  <div class="errors-class">
+    <div id="msg"></div>
+  </div>
+  <div id="msg-s"></div>
+</div>

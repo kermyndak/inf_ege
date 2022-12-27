@@ -3,6 +3,13 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><%= test.updated_at %></h5>
+        <% if test.type_test == 'exam' %>
+          <h5>Экзамен</h5>  
+        <% elsif test.type_test == 'first'%>
+          <h5>Первая часть</h5>
+        <% elsif test.type_test == 'second' %>
+          <h5>Вторая часть</h5>
+        <% end %>
         <p>Первичный балл: <%= test.result %></p>
         <%= turbo_frame_tag 'full' do %>
           <a href="/profile/full_info?test=<%= test.id %>" class="btn btn-primary">Подробнее</a>
