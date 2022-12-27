@@ -3,7 +3,7 @@
     <tr><th>Рейтинг</th></tr>
     <tr><th>Место</th><th>Пользователь</th><th>Баллы</th></tr>
     <% count = 1 %>
-    <% @users.sort_by(&:first).reverse.each do |user, balls| %>
+    <% @users.each do |user, balls| %>
       <% unless balls.zero? %>
         <tr>
           <td><%= count %></td>
