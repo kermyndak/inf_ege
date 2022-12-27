@@ -14,6 +14,10 @@
       <%= form.label :answer, "Answer:" %>
       <%= form.text_field :answer, placeholder: 'answer', class: "form-control" %>
     </div>
+    <div class="type-test">
+      <%= form.label :type_exam, "Type test" %><br>
+      <%= form.select :type_exam, ['Examination', 'First part', 'Second Part'], class: 'form-control' %>
+    </div>
     <br>
     <%= form.submit "Save", class: "btn btn-success" %>
   <% end %>
