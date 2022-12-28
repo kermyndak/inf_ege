@@ -24,7 +24,7 @@
         <%= turbo_frame_tag 'frame' do %>
             <div id="task-tests">
                 <li class="nav-item active">
-                    <%= link_to 'Тесты по заданиям', '/homepage/edit', class: 'nav-link link-info'%>
+                    <%= link_to 'Тесты по заданиям', '/homepage/edit', class: 'nav-link link-info', id: 'tests-link-down'%>
                 </li>
             </div>
         <% end %>
@@ -35,7 +35,7 @@
              <%= turbo_frame_tag 'profile' do %>
                 <div id="profile">
                   <li class="nav-item active">
-                    <%= link_to 'Профиль', '/homepage/profile', class: 'nav-link link-info'%>
+                    <%= link_to 'Профиль', '/homepage/profile', class: 'nav-link link-info', id: 'profile-link-down' %>
                   </li>
                 </div>
               <% end %>

@@ -1,13 +1,13 @@
 <%= turbo_frame_tag 'profile' do %>
     <div id="profile">
         <li class="nav-item active task-part">
-            <%= link_to 'Открыть профиль', '/profile/profile_page', class: 'nav-link link-info' %>
+            <%= link_to 'Открыть профиль', '/profile/profile_page', class: 'nav-link link-info', id: 'open-profile' %>
         </li>
         <li class="nav-item active task-part">
             <%= link_to 'Редактировать профиль', '/profile/edit', class: 'nav-link link-info' %>
         </li>
         <li class="nav-item active task-part">
-            <%= link_to 'Пройденные тесты', '/profile/tests_info', class: 'nav-link link-info' %>
+            <%= link_to 'Пройденные тесты', '/profile/tests_info', class: 'nav-link link-info', id: 'tests-info' %>
         </li>
         <% if @role == 'superadmin' %>
             <li class="nav-item active task-part">
