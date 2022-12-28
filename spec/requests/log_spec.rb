@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Logs", type: :request do
   describe "POST /log" do
+    before do
+      User.destroy_by(email: 'user@mail.ru') if User.find_by(email: 'user@mail.ru')
+    end
     it "returns http success" do
       post "/log/log", xhr: true
       expect(response).to have_http_status(:success)
@@ -32,8 +35,13 @@ RSpec.describe "Logs", type: :request do
       get "/log/sign_up"
       expect(response).to have_http_status(:success)
     end
+  end
 
-    context 'controller tests' do
+  describe 'controller tests' do
+    context 'controller tests for sign up' do
+      before do
+        User.destroy_by(email: 'user@mail.ru') if User.find_by(email: 'user@mail.ru')
+      end
       it 'test @msg_s' do
         post "/log/log", params: {commit: 'Sign Up', email: 'user@mail.ru', password: 'password', password_confirmation: 'password'}, xhr: true
         expect(assigns(:msg_s)).to be true
@@ -68,10 +76,20 @@ RSpec.describe "Logs", type: :request do
         post '/log/log', params: {commit: 'Sign Up', email: 'user', password: 'pass', password_confirmation: 'passe'}, xhr: true
         expect(assigns(:msg)).to eq(["Password confirmation doesn't match Password", "Email This incorrect email address", "Password Length password - min 8 symbols"])
       end
+    end
+
+    context 'controller tests for sign in' do
+      before do
+        User.create(email: 'user@mail.ru', password: 'password', password_confirmation: 'password')
+      end
+      it 'test @msg' do
+        post '/log/log', params: {commit: 'Log In', email: 'user@mail.ru', password: 'password'}, xhr: true
+        expect(assigns(:msg)).to eq([])
+      end
 
       it 'test @msg' do
-        post '/log/log', params: {commit: 'Log In', email: 'user', password: 'pass', password_confirmation: 'passe'}, xhr: true
-        expect(assigns(:msg)).to eq(["This email is not registered"])
+        post '/log/log', params: {commit: 'Log In', email: 'user@mail.ru', password: 'pass'}, xhr: true
+        expect(assigns(:msg)).to eq(["Incorrect password!"])
       end
     end
   end
