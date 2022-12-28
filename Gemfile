@@ -74,3 +74,5 @@ gem "timers", "~> 4.3"
 gem "capybara", "~> 3.38"
 
 gem "selenium-webdriver", "~> 4.7"
+
+gem "rails-controller-testing", "~> 1.0"

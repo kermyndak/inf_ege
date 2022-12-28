@@ -6,4 +6,9 @@ class Task < ApplicationRecord
       message: 'Number task must be in range 1-27'
     }
   }
+  validates :answer, {
+    presence: {
+      message: 'Answer can\t be empty'
+    }
+  }
 end
