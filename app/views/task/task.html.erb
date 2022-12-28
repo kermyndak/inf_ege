@@ -59,6 +59,9 @@
                 <li><a href="/task/change_task">27</a></li>
             </div>
             <%= link_to 'Закончить тест', '/task/result', class: 'btn btn-danger', id: 'result' %>
+            <% arr = ActiveSupport::JSON.decode(cookies[:time]) %>
+            <% t = 236 - (Time.now - Time.new(arr[1], arr[2], arr[3], arr[4], arr[5], arr[6])) %>
+            <div id="timer-time"> <%= "#{(t / 60).to_i}:#{(t % 60).to_i}"  %> </div>
         </div>
     </div>
 </div>
@@ -83,4 +86,20 @@
         href.href += 'current_number=' + current_number + '&answer=' + answer
         console.log(href)
     })
+
+    time = document.getElementById('timer-time')
+    let min = 0;
+    let set_min = time.innerHTML.substr(time.innerHTML.indexOf(':') + 1, ) - 1
+    let hours = time.innerHTML.substr(0, time.innerHTML.indexOf(':'))
+    let timer = setInterval(() => {
+        if (hours == 0 && (set_min - min) < 0) {clearInterval(timer), document.getElementById('result').click()};
+        if (set_min - min < 0){
+            time.innerHTML = --hours + ':59';
+            min = 0;
+            set_min = 58;
+        }
+        else {
+            time.innerHTML = hours + ':' + ((set_min - min < 10) ? '0' + (set_min - min++) : (set_min - min++))
+        }
+    }, 1000);
 </script>

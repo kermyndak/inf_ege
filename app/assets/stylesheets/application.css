@@ -178,6 +178,14 @@
     margin-right: 5px;
 }
 
+#timer-time {
+    border: 1px solid black;
+    width: 65px;
+    font-size: 24px;
+    float: right;
+    padding: 3px 10px;
+}
+
 /* For exam.html.erb */
 .test-description {
     font-size: 24px;
