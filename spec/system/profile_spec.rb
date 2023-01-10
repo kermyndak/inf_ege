@@ -54,7 +54,7 @@ RSpec.describe 'Static content', type: :system do
     sleep(0.2)
     find('#open-profile').click
     sleep(0.2)
-    expect(find('.container-md')).to have_text("Email:\ntester@mail.ru\nРоль:\nuser\nДата регистрации:\n28.12.2022\nКоличество пройденных тестов:\n1\nУровень: 1\n\n1\n2")
+    expect(find('.container-md')).to have_text("Email:\ntester@mail.ru\nРоль:\nuser\nДата регистрации:\n10.1.2023\nКоличество пройденных тестов:\n1\nУровень: 1\n\n1\n2")
   end
 
   scenario 'Examination' do
@@ -81,6 +81,6 @@ RSpec.describe 'Static content', type: :system do
     sleep(0.2)
     find('#open-profile').click
     sleep(0.2)
-    expect(find('.container-md')).to have_text("Email:\nadmin@admin.ru\nРоль:\nadmin\nДата регистрации:\n28.12.2022\nКоличество пройденных тестов:\n0\nУровень: 1\n\n1\n2")
+    expect(find('.container-md')).to have_text("Email:\nadmin@admin.ru\nРоль:\nadmin\nДата регистрации:\n10.1.2023\nКоличество пройденных тестов:\n0\nУровень: 1\n\n1\n2")
   end
 end

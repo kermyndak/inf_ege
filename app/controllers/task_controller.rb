@@ -14,9 +14,7 @@ class TaskController < ApplicationController
 
   def exam; end
 
-  def add_task
-
-  end
+  def add_task; end
 
   def task
     @current.update_answer(@number, @id_task)
@@ -103,13 +101,25 @@ class TaskController < ApplicationController
       case @type_test
       when 'exam'
         cookies[:login] = { value: session[:current_user_id], expires: (Time.now + 14_100 + 600) } # 10 minute 14_600
-        cookies[:time] = { value: ActiveSupport::JSON.encode(Time.now.to_a[..-4].reverse), expires: (Time.now + 236) } unless cookies[:time]
+        unless cookies[:time]
+          cookies[:time] =
+            { value: ActiveSupport::JSON.encode(Time.now.to_a[..-4].reverse),
+              expires: (Time.now + 236) }
+        end
       when 'first'
         cookies[:login] = { value: session[:current_user_id], expires: (Time.now + 5400 + 600) } # 1 hour, 30 min + 10 minute
-        cookies[:time] = { value: ActiveSupport::JSON.encode(Time.now.to_a[..-4].reverse), expires: (Time.now + 5400) } unless cookies[:time]
+        unless cookies[:time]
+          cookies[:time] =
+            { value: ActiveSupport::JSON.encode(Time.now.to_a[..-4].reverse),
+              expires: (Time.now + 5400) }
+        end
       when 'second'
         cookies[:login] = { value: session[:current_user_id], expires: (Time.now + 8700 + 600) } # 2 hour, 25 min + 10 minute
-        cookies[:time] = { value: ActiveSupport::JSON.encode(Time.now.to_a[..-4].reverse), expires: (Time.now + 8700) } unless cookies[:time]
+        unless cookies[:time]
+          cookies[:time] =
+            { value: ActiveSupport::JSON.encode(Time.now.to_a[..-4].reverse),
+              expires: (Time.now + 8700) }
+        end
       end
     else
       session[:current_user_id] = nil
